@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<head>
+
+<meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Load Bootstrap css-->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--load font awesome-->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+<style>
+.no-js .defer-image {
+	display: none;
+}
+
+.defer-image > img {
+	display: block;
+	min-width: 100%;
+	max-width: 100%;
+	
+}
+
+.defer-image.is-loading {
+	position: relative;
+	background: #EEE;
+}
+
+/* Image aspect ratios - % is relative to width of containing block */
+.image-ratio\:1x2   > div { padding-top: 200%; }
+.image-ratio\:9x16  > div { padding-top: 177.777%; }
+.image-ratio\:10x16 > div { padding-top: 160%; }
+.image-ratio\:2x3   > div { padding-top: 150%; }
+.image-ratio\:3x4   > div { padding-top: 133.333%; }
+.image-ratio\:1x1   > div { padding-top: 100%; }
+.image-ratio\:4x3   > div { padding-top: 75%; }
+.image-ratio\:3x2   > div { padding-top: 66.66%; }
+.image-ratio\:16x10 > div { padding-top:62.5%; }
+.image-ratio\:16x9  > div { padding-top: 56.25%; }
+.image-ratio\:2x1   > div { padding-top: 50%; }
+
+/* Preload and loaded animations */
+@-webkit-keyframes bobble {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(0);
+	}
+	35% {
+		opacity: 1;
+		-webkit-transform: translateY(-20px);
+	}
+	100% {
+		opacity: 0;
+		-webkit-transform: translateY(0);
+	}
+}
+
+@keyframes bobble {
+	0% {
+		opacity: 0;
+		transform: translateY(0);
+	}
+	35% {
+		opacity: 1;
+		transform: translateY(-20px);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(0);
+	}
+}
+
+.defer-image.is-loading::after {
+	content: ' ';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 1em;
+	height: 1em;
+	margin: -0.5em 0 0 -0.5em;
+	background: rgba(125, 125, 125, 0.5);
+	border-radius: 100%;
+	-webkit-animation: bobble 2s cubic-bezier(0.6, 1, 1, 1) infinite;
+	        animation: bobble 2s cubic-bezier(0.6, 1, 1, 1) infinite;
+}
+
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.defer-image.is-loaded > img {
+	-webkit-animation: fadeIn 1s both;
+	        animation: fadeIn 1s both;
+}
+
+.img{
+width: 300px;
+height: 300px;
+
+}
+
+body{
+margin: 0;
+}
+
+.header { 
+}
+
+.link {
+  color: black;   
+  font-family: Tahoma;
+}
+
+.form{
+font-family: Tahoma;
+font-size: 14px;
+border: 2px #e7e7e7 solid; 
+padding: 20px;
+border-radius: 3px;
+background-color: gray;
+width: 400px;
+text-align:left;
+}
+
+.formr{
+color: white;
+font-family: Monospace;
+text-align: center;
+margin: 0 30px 100px 30px;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;	
+}
+
+.button{
+cursor: pointer;
+padding: 14px;
+font-size: 14px;
+border-radius: 5px;
+ <!--background-color: #4CAF50;-->
+ color: white;
+}
+
+.txtbox{
+padding: 16px;
+text-align: left;
+border-radius: 5px;
+width: 350px;
+font-size:14px;
+}
+
+.whole{
+	padding:30px;
+	margin:20px 40px 20px 40px;
+	background-color: #ffffff;	
+	height:100%;
+}
+
+ul.nav{
+	list-style-type: none;
+	background-color: black;
+	overflow: hidden;
+	margin:0;	
+	padding: 0;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index:1;
+}
+
+ul.nav li{
+float: left;
+}
+
+ul.nav li a{
+display: inline-block;
+padding: 16px;
+text-decoration: none;
+font-family: Arial;
+color: white;
+transition:0.3s;
+}
+
+ul.nav li a:hover{
+background-color: #555;
+color: white;
+}
+
+button:hover{
+background-color: #555 ;
+color: white;
+}
+
+#footer{
+	bottom: 0;
+	position: fixed;
+	padding: 0px;
+	text-align: center;
+	font-family: Monospace;
+	background-color: black;
+	width: 100%;
+	color: white;
+	margin:0;
+}
+
+.about{
+font-size: 16px;
+padding: 20px;
+background-color: #f1f1f1; 
+margin-bottom: -1px;
+border: 1px solid #e7e7e7;
+clear:both;
+}
+
+p{
+text-indent: 50px;
+}
+
+.portfolio{
+height: 100%;
+background-color: gray;
+padding: 20px;
+}
+
+.contact{
+font-family: Tahoma;
+font-size: 14px;
+padding: 20px;
+background-color: #333; 
+<!--margin-bottom: -1px;-->
+height: 100%;
+
+}
+
+ul.nav li.icon{
+display: none;
+}
+
+@media screen and (max-width:680px){
+ ul.nav li:not(:first-child) {
+ display: none;
+ }
+	ul.nav li.icon{
+	float: right;
+	display: inline-block;
+	}
+}
+
+@media screen and (max-width:680px)
+{
+	ul.nav.responsive {
+	position: relative;
+	}
+	ul.nav.responsive li.icon{
+	position: absolute;
+	right:0;
+	top:0;
+	}
+	ul.nav.responsive li{
+	float: none;
+	display:inline;
+	}
+	ul.nav.responsive li a{
+	display:block;
+	text-align: left;	
+	
+	}
+}
+
+.placeholder {
+width: 200px;
+height: 200px;
+background-repeat: no-repeat;
+background-size: contain;
+background-color: white;
+border: solid black 2px;
+}
+
+
+.social {
+    margin: 0;
+    padding: 0;
+}
+
+.social ul {
+    margin: 0;
+    padding: 5px;
+}
+
+.social ul li {
+    margin: 5px;
+    list-style: none outside none;
+    display: inline-block;
+}
+
+.social i {
+    width: 40px;
+    height: 40px;
+    color: #FFF;
+    background-color: #909AA0;
+    font-size: 22px;
+    text-align:center;
+    padding-top: 12px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+}
+
+
+.social i:hover {
+    color: #FFF;
+    text-decoration: none;
+    transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+}
+
+
+.social .fa-facebook:hover {
+    background: #4060A5;
+}
+
+.social .fa-twitter:hover {
+    background: #00ABE3;
+}
+
+.social .fa-google-plus:hover {
+    background: #e64522;
+}
+
+.social .fa-github:hover {
+    background: #343434;
+}
+
+.social .fa-tumblr:hover {
+    background: #3a5876;
+}
+
+.nav li.active {
+    background: #f90;
+}
+</style>
+</head>
+<body>
+ 
+   <div>
+	<ul class="nav" id="nav">
+	<li class="active"> <a href="#me">ABOUT ME </a></li>
+	<li> <a href="#port">PORTFOLIO </a> </li>
+	<li> <a href="#msg" >MESSAGE ME </a> </li>
+	<li class="icon">
+    <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
+  </li>
+	</ul>
+ </div>
+ <div id="me" class="whole" >
+	<div class="about">
+		<!--
+		<div style="float: left">
+		
+		</div>	
+		
+		-->
+		<div class="row">
+			<div class= "col-md-2" style="text-align:center">
+			<img style="border: green solid 3px;border-radius: 100%" alt="This is me" src= "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSZTj9SkJju22dRMFqUMDebOc1mS-ccsF8aaSN_DVldFZ0B0YslauVcp2M" />
+			</div>
+			<div class= "col-md-10">
+				<p style="margin-left: 2px">  Hi. I'm Marieshiel Enriquez, 24 years old. I finished BS Computer Science in college. I am currently practicing my coding skills and trying to gain certificates from FreeCodeCamp.com for front-end, back-end, and full-stack web developer. </p>	
+				<p>Aside from coding, I love doing other things too. I like yoga, muay thai, reading, watching funny or fantasy theme movies and tv series.  </p>
+					<br>
+			</div>
+				<p style="text-align: center;
+				font-size: 30px"> <strong> -o-o- </strong> </p>
+		</div>
+	</div>
+	<div class="portfolio" id="port">
+		<h5 style="font-size: 16px; text-align:center; color:white">Images from <a href="http://placekitten.com/"> Placekitten </a> </h5>
+		<h2 style="text-align: center;color:white;font-family:Tahoma;margin: 5px 0 0px 0"> PORTFOLIO
+		
+		</h2>
+		
+		<h5 style="text-align: center;color:white; margin-bottom:30px"> I have no portfolio yet. So I just used a cat image as a sample snapshot. </h5>
+		<div class="row" style="margin-left:40px"> 
+			<div class="col-md-4">
+				<div class="defer-image img img-responsive">
+					<div data-src="http://placekitten.com/640/480" alt="A lovely kitten"></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="defer-image img img-responsive">
+					<div data-src="http://placekitten.com/640/480" alt="A lovely kitten"></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="defer-image img img-responsive">
+					<div data-src="http://placekitten.com/640/480" alt="A lovely kitten"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-left:40px"> 
+			<div class="col-md-4">
+				<div class="defer-image img img-responsive">
+					<div data-src="http://placekitten.com/640/480" alt="A lovely kitten"></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="defer-image img img-responsive">
+					<div data-src="http://placekitten.com/640/480" alt="A lovely kitten"></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="defer-image img img-responsive">
+					<div data-src="http://placekitten.com/640/480" alt="A lovely kitten"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+			<div id="msg" class="contact" >
+			<h2 style="color: white; text-align:center; margin: 5px 0 30px 0">SEND ME A MESSAGE</h2>
+	
+				 <div class="row formr">
+					<div class="col-md-6">
+							<form class="form" action="/submit">
+						 Name <br> 
+						 <input type="text" name="name" placeholder="Type your name" class="txtbox" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Type your name'"> <br>
+						 <br>E-mail <br> 
+						 <input type="text" name="email" placeholder="Type your e-mail" class="txtbox" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Type your e-mail'" ><br><br>
+						 Message <br>
+						 <textarea rows="5" cols="30" placeholder="Your message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your message'" class="txtbox"></textarea> <br> <br>
+						 <button class="btn" > SUBMIT </button>
+						 </form>
+					</div>
+					<div class="col-md-6" >
+					<h4 style="color:white; text-align:center"> I love to hear from you.</h4>
+					<img  alt="hello" style="height: 350px; width: 350px; text-align:center" src="http://www.aquoteaday.nl/wp-content/uploads/2014/01/Just-say-hello1-960x960.jpg" />
+					</div>
+				</div>
+			</div>
+ </div>
+
+ 
+ 
+ <div id="footer">
+ <div class="social">
+	<h4 style="font-name:Tahoma"> CONNECT WITH ME</h4>
+    <ul>
+        <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa fa-lg fa-google-plus"></i></a></li>
+        <li><a href="#"><i class="fa fa-lg fa-github"></i></a></li>
+        <li><a href="#"><i class="fa fa-lg fa-tumblr"></i></a></li>
+      
+    </ul>
+</div>
+	
+	<h6> Copyright by <a href="#">Marieshiel</a>. All rights reserved. </h6>
+	
+ </div>
+ 
+ <script>
+function myFunction() {
+    document.getElementsByClassName("nav")[0].classList.toggle("responsive");
+}
+</script>
+
+<script type="text/javascript">
+
+var make_button_active = function()
+{
+  //Get item siblings
+  var siblings =($(this).siblings());
+
+  //Remove active class on all buttons
+  siblings.each(function (index)
+    {
+      $(this).removeClass('active');
+    }
+  )
+
+
+  //Add the clicked button class
+  $(this).addClass('active');
+}
+
+//Attach events to menu
+$(document).ready(
+  function()
+  {
+    $(".nav li").click(make_button_active);
+  }  
+)
+
+</script>
+
+<script>
+(function() {
+
+    // Only load images if the browser 'cuts the mustard' <http://responsivenews.co.uk/post/18948466399/cutting-the-mustard/>
+    if ( ! document.addEventListener || ! document.querySelector) {
+        return alert("This page is \"cutting the mustard\" and your browser didn't make it.");
+    }
+
+    var deferImage = function(element) {
+        var i, len, attr;
+        var img = new Image();
+        var placehold = element.children[0];
+
+        element.className+= ' is-loading';
+
+        img.onload = function() {
+            element.className = element.className.replace('is-loading', 'is-loaded');
+            element.replaceChild(img, placehold);
+        };
+
+        for (i = 0, len = placehold.attributes.length; i < len; i++) {
+            attr = placehold.attributes[i];
+
+            if (attr.name.match(/^data-/)) {
+                img.setAttribute(attr.name.replace('data-', ''), attr.value);
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var placeholders = document.querySelectorAll('.defer-image');
+
+        for (var i = 0, len = placeholders.length; i < len; i++) {
+            deferImage(placeholders[i]);
+        }
+    });
+
+})();
+</script>
+ 
+ <!-- <img alt="This is me :)" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSZTj9SkJju22dRMFqUMDebOc1mS-ccsF8aaSN_DVldFZ0B0YslauVcp2M" / >
+ -->
+ 
+</body>
